@@ -1,0 +1,44 @@
+@model PersoneDetailViewModel
+<section>
+
+    <div margin-left = "10">
+        <div>Nome: @Model.nome</div>
+        <div>Cognome: @Model.cognome</div>
+        <div>Età: @Model.eta</div>
+    </div>
+    <div><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-plus"></i>
+            Modifica dati</a></div>
+    <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+
+        <div><button class="btn btn-outline-primary btn-sm"><i
+                    class="fa fa-plus"></i>
+                Elimina Persona</button></div>
+    </form>
+
+
+</section>
+<section>
+        <a class="btn btn-outline-primary btn-sm" asp-controller= "Auto" asp-action="Create" asp-route-id="@Model.Id"><i class="fa fa-plus"></i> Aggiungi una nuova auto</a>
+</section>
+<section>
+    <h2>Auto(@Model.Auto.Count)</h2>
+    @foreach (var auto in Model.Auto)
+    {
+        <hr>
+        <div>
+            <div>
+                Marca: <a>@auto.marca</a>
+            </div>
+            <div>
+                Modello: <a>@auto.modello</a>
+            </div>
+            <div>
+                Targa: <a>@auto.targa</a>
+            </div>
+            <div class="col-md-2 d-flex align-items-center">
+                 <a class="btn btn-outline-primary" asp-controller="Auto" asp-action="Detail" asp-route-id="@auto.id">Dettaglio</a>
+            </div>
+        </div>
+    }
+
+</section>
